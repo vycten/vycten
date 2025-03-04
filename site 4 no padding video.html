@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vycten</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow-x: hidden;
+            background-color: #303034;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 25%;
+        }
+        .logo a {
+            color: white;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            margin-right: 25%;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            padding-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .video-container {
+            width: 560px;
+            height: 315px;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+            padding: 10px;
+            position: relative;
+        }
+        .video-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            border-radius: 10px;
+            padding: 5px;
+        }
+        .steam-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #1b2838;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .description {
+            margin-top: 10px;
+            text-align: center;
+            max-width: 65ch;
+            font-size: 16px;
+        }
+        .social-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .social-buttons a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 20px;
+            color: white;
+        }
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            left: 20px;
+            font-size: 14px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        <img src="https://cdnb.artstation.com/p/assets/images/images/077/128/073/large/victen-aurel-shen-captura-de-pantalla-2024-06-17-172645.jpg?1718666878" alt="Background" class="background-image">
+    </div>
+    <div class="navbar">
+        <div class="logo"><a href="#">Vycten</a></div>
+        <div class="nav-links">
+            <a href="#">About</a>
+            <a href="http://twitter.com/vycten" target="_blank">@Vycten</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="video-container">
+            <div class="video-title">ACCELERATE</div>
+            <iframe width="560" height="315" src="https://www.youtube.com/watch?v=-M9OndxLlm4" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <a href="https://vycten.itch.io/" class="steam-button" target="_blank">Follow on itch.io</a>
+        <div class="description">
+            <strong>ACCELERATE:</strong><br>
+            An unstoppable disease is killing the only alien alive, you will travel
+            to a black hole stretching its last moments into centuries. Manage
+            your resources and movements until a cure is developed.
+        </div>
+    </div>
+    <div class="social-buttons">
+        <a href="https://vycten.itch.io/" target="_blank">&#x1F517;</a>
+        <a href="https://www.artstation.com/vycten" target="_blank">🎨</a>
+        <a href="https://www.youtube.com/@vycten" target="_blank">▶</a>
+    </div>
+    <div class="footer">Vycten trademark 2020-2025</div>
+
+    <script>
+        function adjustBackground() {
+            const backgroundImage = document.querySelector('.background-image');
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            const imageAspectRatio = backgroundImage.naturalWidth / backgroundImage.naturalHeight;
+
+            if (viewportWidth / viewportHeight > imageAspectRatio) {
+                backgroundImage.style.width = 'auto';
+                backgroundImage.style.height = '100%';
+            } else {
+                backgroundImage.style.width = '100%';
+                backgroundImage.style.height = 'auto';
+            }
+        }
+
+        window.addEventListener('load', adjustBackground);
+        window.addEventListener('resize', adjustBackground);
+
+        window.addEventListener('scroll', () => {
+            const backgroundContainer = document.querySelector('.background-container');
+            const scrollY = window.scrollY;
+            backgroundContainer.style.transform = `translateY(-${scrollY * 0.5}px)`;
+        });
+    </script>
+</body>
+</html>
