@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vycten</title>
     <style>
-        /* Hide scrollbar for all browsers */
         html, body {
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Hide scrollbars */
+            overflow: hidden;
             height: 100%;
         }
         body {
@@ -32,8 +31,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures the image covers the entire container */
-            object-position: center; /* Centers the image */
+            object-fit: cover;
+            object-position: center;
         }
         .navbar {
             display: flex;
@@ -70,17 +69,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 79vh; /* Updated min-height */
+            min-height: 79vh;
             flex-direction: column;
-            padding-top: 80px; /* Updated padding-top */
+            padding-top: 78px;
             position: relative;
             z-index: 1;
         }
         .video-container {
-            width: 90%; /* Responsive width */
-            max-width: 640px; /* Maximum width */
-            height: auto; /* Responsive height */
-            aspect-ratio: 16 / 11; /* Maintain aspect ratio */
+            width: 90%;
+            max-width: 640px;
+            height: auto;
+            aspect-ratio: 16 / 11;
             background: linear-gradient(to bottom right, #151a27c4, #ff7a091f);
             display: flex;
             justify-content: center;
@@ -132,8 +131,10 @@
             align-items: center;
             text-decoration: none;
             border-radius: 10px;
-            font-size: 20px;
-            color: white;
+        }
+        .social-buttons img {
+            width: 24px;
+            height: 24px;
         }
         .footer {
             position: fixed;
@@ -142,8 +143,6 @@
             font-size: 14px;
             z-index: 1;
         }
-
-        /* Responsive adjustments for smaller screens */
         @media (max-width: 768px) {
             .navbar {
                 padding: 10px;
@@ -156,7 +155,7 @@
                 margin-right: 10%;
             }
             .video-container {
-                width: 95%; /* Slightly smaller on mobile */
+                width: 95%;
                 padding: 5px;
             }
             .video-title {
@@ -170,7 +169,7 @@
 </head>
 <body>
     <div class="background-container">
-        <img src="https://github.com/vycten/vycten/blob/main/background_image.jpg?raw=true" alt="Background" class="background-image">
+        <img src="background_image.jpg" alt="Background" class="background-image">
     </div>
     <div class="navbar">
         <div class="logo"><a href="#">Vycten</a></div>
@@ -193,11 +192,17 @@
         </div>
     </div>
     <div class="social-buttons">
-        <a href="https://vycten.itch.io/" target="_blank">&#x1F517;</a>
-        <a href="https://www.artstation.com/vycten" target="_blank">🎨</a>
-        <a href="https://www.youtube.com/@vycten" target="_blank">▶</a>
+        <a href="https://vycten.itch.io/" target="_blank">
+            <img src="https://github.com/vycten/vycten/blob/main/itchio-textless-white.svg?raw=true" alt="itch.io">
+        </a>
+        <a href="https://www.artstation.com/vycten" target="_blank">
+            <img src="https://github.com/vycten/vycten/blob/main/ArtStation-logomark-dark.svg?raw=true" alt="ArtStation">
+        </a>
+        <a href="https://www.youtube.com/@vycten" target="_blank">
+            <img src="https://github.com/vycten/vycten/blob/main/youtube-icon-5.svg?raw=true" alt="YouTube">
+        </a>
     </div>
-    <div class="footer">2025 have a nice day</div>
+    <div class="footer">Look behind you</div>
 
     <script>
         function adjustBackground() {
@@ -205,33 +210,21 @@
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
             const imageAspectRatio = backgroundImage.naturalWidth / backgroundImage.naturalHeight;
-
-            // Step 1: Fit the image to the vertical space
             const imageHeight = viewportHeight;
             const imageWidth = imageHeight * imageAspectRatio;
-
-            // Step 2: Check if the image covers the horizontal space
             if (imageWidth < viewportWidth) {
-                // If not, scale the image to fit the horizontal space
                 const scaleFactor = viewportWidth / imageWidth;
                 backgroundImage.style.width = `${viewportWidth}px`;
                 backgroundImage.style.height = `${imageHeight * scaleFactor}px`;
             } else {
-                // If it does, maintain the vertical fit
                 backgroundImage.style.width = `${imageWidth}px`;
                 backgroundImage.style.height = `${imageHeight}px`;
             }
-
-            // Center the image horizontally
             backgroundImage.style.left = `50%`;
             backgroundImage.style.transform = `translateX(-50%)`;
         }
-
-        // Adjust background on load and resize
         window.addEventListener('load', adjustBackground);
         window.addEventListener('resize', adjustBackground);
-
-        // Parallax effect for background
         window.addEventListener('scroll', () => {
             const backgroundContainer = document.querySelector('.background-container');
             const scrollY = window.scrollY;
